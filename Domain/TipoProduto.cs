@@ -2,7 +2,7 @@
 
 public enum TipoProduto
 {
-    Organico = 1,
-    Inogarnico = 2
+    Organico,
+    Inogarnico
 
 }

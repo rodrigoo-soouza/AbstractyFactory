@@ -1,4 +1,5 @@
 ﻿using AbstractyFactory.AbstractFactories;
+using AbstractyFactory.Domain;
 using AbstractyFactory.Domain.Base;
 
 namespace AbstractyFactory.Clients;
@@ -22,6 +23,19 @@ public class ProdutoCliente
     public List<Embalagem> BuscaEmbalagem()
     {
         return _ebalagem.BuscaEmbalagem();
+    }   
+
+    public static ProdutoCliente CreateProdutoCliente(TipoProduto tipo)
+    {
+        switch (tipo)
+        {
+            case TipoProduto.Organico:
+                return new ProdutoCliente(new ProdutoOrganicoFabrica());
+            case TipoProduto.Inogarnico:
+                return new ProdutoCliente(new ProdutoInogarnicoFabrica());
+            default:
+                throw new Exception("Not found");
+        }
     }   
 }
 
